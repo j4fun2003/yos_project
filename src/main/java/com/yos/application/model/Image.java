@@ -5,23 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Image")
-public class Image {
+@Table(name = "Image_Detail")
+public class ImageDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imgUrl;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    ProductColorSize productColorSize;
 
-    @OneToMany(mappedBy = "image")
-    List<ImageDetail> imageDetails;
-
+    private String image_url;
 
 }
